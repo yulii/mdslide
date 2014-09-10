@@ -7,7 +7,7 @@ bug-reports:         https://github.com/yulii/mdslide/issues
 license:             MIT
 license-file:        LICENSE
 author:              yulii
-maintainer:          yuliinfo@gmail.com
+maintainer:          Ryo Yoneyama <yuliinfo@gmail.com>
 
 -- A copyright notice.
 -- copyright:           
@@ -36,6 +36,16 @@ executable           mdslide
                  ,   mdslide
 
     -- ghc-options:       -threaded -O2
+
+test-suite spec
+  type:              exitcode-stdio-1.0
+  hs-source-dirs:    src, test
+  main-is:           spec.hs
+  ghc-options:       -Wall
+  build-depends:     base        == 4.6.*
+               ,     hspec       >= 1.11.4
+               ,     QuickCheck
+--               ,     hspec-expectations
 
 source-repository    head
   type:              git
