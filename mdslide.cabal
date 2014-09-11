@@ -22,6 +22,7 @@ cabal-version:       >=1.8
 
 library
   build-depends:     base       == 4.6.*
+               ,     pandoc     >= 1.13    && < 1.14
   
 executable           mdslide
 --    if flag(library-only)
@@ -30,6 +31,8 @@ executable           mdslide
     main-is:         main.hs
     hs-source-dirs:  src
     build-depends:   base
+                 ,   blaze-html
+                 ,   pandoc
                  ,   http-types
                  ,   warp
                  ,   wai
