@@ -8,13 +8,23 @@ import Network.Wai
 import Network.Wai.Handler.Warp (run)
 
 import Server.Environment
--- import Text.Markdown
+import Server.Handler
 import Text.Slide
 
-app _ respond = do
-  content <- getContent
-  respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
+app request respond = do
+  putStrLn . show . rawPathInfo $ request
+  putStrLn . show . pathInfo $ request
+  case (pathInfo request) of
+    [] -> do
+      content <- getContent
+      respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
+    _  -> do
+      respond $ responseFile status200 (headers request) (filePath request) Nothing
+
+  -- content <- getContent
+  -- respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
+  -- respond $ responseFile status200 [("Content-Type", "text/html")] (filePath request) Nothing
 
 server :: Int -> IO ()
 server port = do
-  run 3000 app
+  run port app
