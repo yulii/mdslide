@@ -29,19 +29,19 @@ executable           mdslide
 --    if flag(library-only)
 --        Buildable: False
 
-    main-is:         main.hs
-    hs-source-dirs:  src
-    build-depends:   base
-                 ,   blaze-builder
-                 ,   blaze-html
-                 ,   bytestring
-                 ,   pandoc
-                 ,   regex-compat-tdfa
-                 ,   http-types
-                 ,   text
-                 ,   warp
-                 ,   wai
-                 ,   mdslide
+  main-is:           main.hs
+  hs-source-dirs:    src
+  build-depends:     base
+               ,     blaze-builder
+               ,     blaze-html
+               ,     bytestring
+               ,     pandoc
+               ,     regex-compat-tdfa
+               ,     http-types
+               ,     text
+               ,     warp
+               ,     wai
+               ,     mdslide
 
     -- ghc-options:       -threaded -O2
 

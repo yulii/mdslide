@@ -11,19 +11,14 @@ import Server.Environment
 import Server.Handler
 import Text.Slide
 
+app :: Request -> (Response -> IO a) -> IO a
 app request respond = do
-  putStrLn . show . rawPathInfo $ request
-  putStrLn . show . pathInfo $ request
   case (pathInfo request) of
     [] -> do
       content <- getContent
       respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
     _  -> do
       respond $ responseFile status200 (headers request) (filePath request) Nothing
-
-  -- content <- getContent
-  -- respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
-  -- respond $ responseFile status200 [("Content-Type", "text/html")] (filePath request) Nothing
 
 server :: Int -> IO ()
 server port = do
