@@ -21,8 +21,9 @@ cabal-version:       >=1.8
 --    Default:       False
 
 library
-  build-depends:     base       == 4.6.*
-               ,     pandoc     >= 1.13    && < 1.14
+  build-depends:     base              == 4.6.*
+               ,     pandoc            >= 1.13     && < 1.14
+               ,     regex-compat-tdfa >= 0.95.1.4 && < 0.96
   
 executable           mdslide
 --    if flag(library-only)
@@ -31,9 +32,13 @@ executable           mdslide
     main-is:         main.hs
     hs-source-dirs:  src
     build-depends:   base
+                 ,   blaze-builder
                  ,   blaze-html
+                 ,   bytestring
                  ,   pandoc
+                 ,   regex-compat-tdfa
                  ,   http-types
+                 ,   text
                  ,   warp
                  ,   wai
                  ,   mdslide
@@ -48,7 +53,6 @@ test-suite spec
   build-depends:     base        == 4.6.*
                ,     hspec       >= 1.11.4
                ,     QuickCheck
---               ,     hspec-expectations
 
 source-repository    head
   type:              git
