@@ -2,16 +2,22 @@
 
 Markdown Slide Generator
 
+<!-- @slide -->
+
 ## Installation
 
 - Foo
 - Bar
+
+<!-- @slide -->
 
 ## Usage
 
 ```
 mdslide hoge.md
 ```
+
+<!-- @slide -->
 
 ## Contributing
 
@@ -21,6 +27,7 @@ mdslide hoge.md
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+<!-- @slide -->
 
 ## LICENSE
 (The MIT License)
