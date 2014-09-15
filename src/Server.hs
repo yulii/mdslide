@@ -8,18 +8,18 @@ import Network.Wai
 import Network.Wai.Handler.Warp (run)
 
 import Server.Environment
+import Server.Handler
+import Text.Slide
 
--- 一時避難
-import qualified Text.Blaze.Html.Renderer.Utf8 as R
-import Text.Pandoc (readMarkdown, writeHtml, def)
-
-markdown = R.renderHtml . (writeHtml def) . (readMarkdown def)
--- 
-
-app _ respond = do
-  content <- getContent
-  respond $ responseLBS status200 [("Content-Type", "text/html")] (markdown content)
+app :: Request -> (Response -> IO a) -> IO a
+app request respond = do
+  case (pathInfo request) of
+    [] -> do
+      content <- getContent
+      respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
+    _  -> do
+      respond $ responseFile status200 (headers request) (filePath request) Nothing
 
 server :: Int -> IO ()
 server port = do
-  run 3000 app
+  run port app
