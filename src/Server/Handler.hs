@@ -12,7 +12,12 @@ import Network.Wai
 headers :: Request -> ResponseHeaders
 headers request = [("Content-Type", ctype request)]
   where
-    ctype = T.encodeUtf8 . (T.append "text/") . extension . pathText
+    ctype = T.encodeUtf8 . contentType . extension . pathText
+
+contentType :: Text -> Text
+contentType "css" = "text/css"
+contentType "js"  = "text/javascript"
+contentType ext   = T.append "text/" ext
 
 filePath :: Request -> FilePath
 filePath = T.unpack . (T.append "static/") . pathText
