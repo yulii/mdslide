@@ -1,30 +1,47 @@
-(function(w,d,l,undefined) {
-  // ページを読み込んだ時の初期化処理
-  //   現在のページ数判定
-  //   最終ページ判定
-  // ハッシュ値が変わった時
-  //   設定値を上書き更新する
-  // ->  状態管理は $mds.data のハッシュに持たせる
-  w.$mds = {};
-  $mds.page = function() {
-    return +l.hash.slice(1);
+(function(w,d,l,undefined,self) {
+  self = w.$mds = {};
+
+  $mds.init = function() {
+    self._class = 'slide'
+    self._slide = d.getElementsByClassName(self._class);
+    self._size  = self._slide.length;
+    self._page  = +l.hash.slice(1);
+    if (self._page <= 0 || isNaN(self._page)) {
+      self._page = 1;
+    }
+  };
+  $mds.page = function(p) {
+    l.hash = '#' + p;
   };
   $mds.next = function() {
-    l.hash = "#" + (this.page() + 1);
+    if (self._page < self._size) {
+      self.page(self._page + 1);
+      return true;
+    } else {
+      return false;
+    }
   };
   $mds.prev = function() {
-    l.hash = "#" + (this.page() - 1);
+    if (self._page > 1) {
+      self.page(self._page - 1);
+      return true;
+    } else {
+      return false;
+    }
   };
-  $mds.render = function(p, e, i) {
-    p = $mds.page();
-    e = document.getElementsByClassName("slide");
-    i = e.length;
+  $mds.render = function(e, i, p) {
+    p = self._page; i = self._size;
+    e = self._slide;
     while (i--) {
       e[i].style.display = (e[i].dataset.page == p ? 'block' : 'none');
     }
   };
+  $mds.refresh = function() {
+    self.init();
+    self.render();
+  };
 
-  w.onload = $mds.render;
-  w.onhashchange = $mds.render;
+  w.onload       = $mds.refresh;
+  w.onhashchange = $mds.refresh;
 
 })(window, document, location);
