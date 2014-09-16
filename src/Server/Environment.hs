@@ -10,3 +10,4 @@ getFileName = liftM head getArgs
 
 getContent :: IO String
 getContent = getFileName >>= readFile
+

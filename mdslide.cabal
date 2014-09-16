@@ -16,8 +16,7 @@ category:            Web
 build-type:          Simple
 cabal-version:       >=1.8
 
---data-files:          static/css/mdslide.css
---          ,          static/js/mdslide.js 
+data-dir:            static
 
 --Flag library-only
 --    Description:   Build for use with "mdslide server"
@@ -25,7 +24,6 @@ cabal-version:       >=1.8
 
 library
   build-depends:     base              == 4.6.*
-               ,     file-embed        >= 0.0.7    && < 0.1
                ,     pandoc            >= 1.13     && < 1.14
                ,     regex-compat-tdfa >= 0.95.1.4 && < 0.96
   
@@ -39,7 +37,6 @@ executable           mdslide
                ,     blaze-builder
                ,     blaze-html
                ,     bytestring
-               ,     file-embed
                ,     pandoc
                ,     regex-compat-tdfa
                ,     http-types
