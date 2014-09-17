@@ -3,6 +3,10 @@ module Server
   ( server
   ) where
 
+import Paths_mdslide
+
+import qualified Data.ByteString.Lazy.Char8 as BS
+
 import Network.HTTP.Types (status200)
 import Network.Wai
 import Network.Wai.Handler.Warp (run)
@@ -18,7 +22,10 @@ app request respond = do
       content <- getContent
       respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
     _  -> do
-      respond $ responseFile status200 (headers request) (filePath request) Nothing
+      -- respond $ responseFile status200 (headers request) (filePath request) Nothing
+      fp <- getDataFileName (filePath request)
+      content <- BS.readFile fp
+      respond $ responseLBS status200 (headers request) content
 
 server :: Int -> IO ()
 server port = do
