@@ -23,10 +23,8 @@ app request respond = do
       respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
     _  -> do
       fp <- getDataFileName (filePath request)
-      putStrLn fp
       content <- BS.readFile fp
       respond $ responseLBS status200 (headers request) content
---      respond $ responseFile status200 (headers request) (filePath request) Nothing
 
 server :: Int -> IO ()
 server port = do
