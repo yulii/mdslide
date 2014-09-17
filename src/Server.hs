@@ -22,6 +22,7 @@ app request respond = do
       content <- getContent
       respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
     _  -> do
+      -- respond $ responseFile status200 (headers request) (filePath request) Nothing
       fp <- getDataFileName (filePath request)
       content <- BS.readFile fp
       respond $ responseLBS status200 (headers request) content
