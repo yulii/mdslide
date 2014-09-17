@@ -1,6 +1,15 @@
 (function(w,d,l,undefined,self) {
   self = w.$mds = {};
 
+  $mds.logger = function(e) { return; };
+  $mds.debug = function(o) {
+    if (o) {
+      self.logger = function(e) { console.log(e); };
+    } else {
+      self.logger = function(e) { return; };
+    }
+  };
+
   $mds.init = function() {
     self._class = 'slide'
     self._slide = d.getElementsByClassName(self._class);
@@ -43,5 +52,13 @@
 
   w.onload       = $mds.refresh;
   w.onhashchange = $mds.refresh;
+
+  w.onkeyup = function(e) {
+    self.logger(e.keyCode);
+    switch (e.keyCode) {
+      case 37: self.prev(); break;
+      case 39: self.next(); break;
+    }
+  };
 
 })(window, document, location);
