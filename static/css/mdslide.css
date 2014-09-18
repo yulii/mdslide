@@ -18,7 +18,6 @@ time, mark, audio, video {
   font-size: 100%;
   vertical-align: baseline;
 }
-ol, ul { list-style: none; }
 table { border-collapse: collapse; border-spacing: 0; }
 caption, th, td {
   text-align: left;
@@ -36,7 +35,42 @@ hgroup, menu, nav, section, summary {
   display: block;
 }
 
+html {
+  background-color: #e3e3e3;
+}
 body {
   margin: 0 auto;
-  width: 640px;
+  padding: 20px;
+  min-width: 600px;
+  min-height: 440px;
+  font-family: 'Lucida Grande', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Meiryo', 'メイリオ', Sans-Serif;
+  font-size: 150%;
+  color: #1c1c1c;
+  text-shadow: -1px 1px 0 rgba(255, 255, 255, 1);
+}
+.slide {
+  height: 100%;
+}
+
+h1 {
+  padding-top: 30%;
+  font-size: 200%;
+  font-weight: bold;
+  color: #561f5a;
+  text-align: center;
+}
+h2 {
+  padding: 20px 0;
+  font-size: 150%;
+  font-weight: bold;
+}
+p {
+  color: #dd5e38;
+}
+ol, ul {
+  padding-left: 2em;
+  list-style: none;
+}
+li {
+  margin-bottom: 20px;
 }
