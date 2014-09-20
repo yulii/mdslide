@@ -3,4 +3,4 @@ import Server
 
 main :: IO ()
 main = do
-  server 3000
+  server 10687
