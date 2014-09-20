@@ -19,6 +19,30 @@ mdslide hoge.md
 
 <!-- @slide -->
 
+## Syntax
+
+### Markdown writing
+
+You can make text __bold__, _italic_, or ___highlight___.
+
+```
+You can make text __bold__, _italic_, or ___highlight___.
+```
+
+> You can indicate blockquotes with a `>`.
+
+```
+> You can indicate blockquotes with a `>`.
+```
+
+```
+Block Code
+```
+
+[link](http://github.com/yulii/mdslide)
+
+<!-- @slide -->
+
 ## Contributing
 
 1. Fork it
