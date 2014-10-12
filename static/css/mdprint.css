@@ -1,0 +1,8 @@
+@page {
+  margin: 10mm;
+  size: 297mm 210mm;
+}
+.slide {
+  display: block !important;
+  page-break-after: always;
+}

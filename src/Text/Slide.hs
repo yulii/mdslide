@@ -20,6 +20,7 @@ renderHtml s = R.renderHtml $ do
   docTypeHtml $ do
     head $ do
       link ! rel "stylesheet" ! type_ "text/css" ! href "/css/mdslide.css"
+      link ! rel "stylesheet" ! type_ "text/css" ! href "/css/mdprint.css" ! media "print"
     body $ do
       toMarkup $ slideNumber (slides s) 1
       script ! type_ "text/javascript" ! src "/js/mdslide.js" $ ""
