@@ -16,7 +16,9 @@ category:            Web
 build-type:          Simple
 cabal-version:       >=1.8
 
-data-dir:            static
+data-files:          static/css/*.css
+          ,          static/js/*.js
+          ,          static/favicon.ico
 
 --Flag library-only
 --    Description:   Build for use with "mdslide server"
