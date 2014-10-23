@@ -5,6 +5,7 @@ module Server
 
 import Paths_mdslide
 
+import Control.Applicative
 import qualified Data.ByteString.Lazy.Char8 as BS
 
 import Network.HTTP.Types (status200)
@@ -17,14 +18,14 @@ import Text.Slide
 
 app :: Request -> (Response -> IO a) -> IO a
 app request respond = do
+  mapM_ print (pathInfo request)
   case (pathInfo request) of
     [] -> do
       content <- getContent
       respond $ responseLBS status200 [("Content-Type", "text/html")] (renderHtml content)
     _  -> do
-      -- respond $ responseFile status200 (headers request) (filePath request) Nothing
-      fp <- getDataFileName (filePath request)
-      content <- BS.readFile fp
+      fp <- getDataFileName ("static/" ++ (filePath request))
+      content <- BS.readFile (filePath request) <|> BS.readFile fp
       respond $ responseLBS status200 (headers request) content
 
 server :: Int -> IO ()

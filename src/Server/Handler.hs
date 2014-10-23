@@ -20,11 +20,10 @@ contentType "js"  = "text/javascript"
 contentType ext   = T.append "text/" ext
 
 filePath :: Request -> FilePath
-filePath = T.unpack . (T.append "static/") . pathText
+filePath = T.unpack . pathText
 
 pathText :: Request -> Text
 pathText = concatPath . pathInfo
-
 
 concatPath :: [Text] -> Text
 concatPath = T.intercalate "/"
