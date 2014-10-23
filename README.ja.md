@@ -43,6 +43,21 @@ Block Code
 
 <!-- @slide -->
 
+## エクスポート（ファイル形式変換）
+
+### PDF
+
+0. ブラウザでスライドを印刷する
+0. プリンターの選択で「PDF に保存する」を選ぶ
+
+### その他の形式
+
+[Pandoc](http://johnmacfarlane.net/pandoc/demos.html) を使うと幸せになれます。
+
+
+<!-- @slide -->
+
+
 ## Contributing
 
 1. Fork it
