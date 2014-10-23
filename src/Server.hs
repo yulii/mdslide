@@ -18,7 +18,6 @@ import Text.Slide
 
 app :: Request -> (Response -> IO a) -> IO a
 app request respond = do
-  mapM_ print (pathInfo request)
   case (pathInfo request) of
     [] -> do
       content <- getContent
