@@ -29,4 +29,6 @@ app request respond = do
 
 server :: Int -> IO ()
 server port = do
+  putStrLn $ ":: mdSlide is standing watch at http://127.0.0.1:" ++ (show port)
+  putStrLn ":: Ctrl-C to shutdown server"
   run port app
